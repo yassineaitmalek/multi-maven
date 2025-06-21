@@ -19,7 +19,7 @@ public abstract class AbstractDSLRepository<T, U> extends SimpleJpaRepository<T,
 
     private final JPAQueryFactory jpaQueryFactory;
 
-    protected AbstractDSLRepository(Class<T> domainClass, EntityManager entityManager) {
+    public AbstractDSLRepository(Class<T> domainClass, EntityManager entityManager) {
         super(domainClass, entityManager);
         this.entityManager = entityManager;
         this.jpaQueryFactory = new JPAQueryFactory(entityManager);
