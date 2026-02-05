@@ -24,6 +24,7 @@
     <module>yatmk-api-test-persistence</module>
     <module>yatmk-api-test-infrastructure</module>
     <module>yatmk-api-test-presentation</module>
+    <module>yatmk-api-test-server</module>
   </modules>
 
   <properties>
@@ -42,7 +43,7 @@
     <lombok.version>1.18.24</lombok.version>
     <lombok.mapstruct.version>0.2.0</lombok.mapstruct.version>
     <mojo.maven.helper.version>3.2.0</mojo.maven.helper.version>
-    <maven.surefire.version>2.19.1</maven.surefire.version>
+    <maven.surefire.version>3.2.5</maven.surefire.version>
     <maven.javadoc.version>3.3.1</maven.javadoc.version>
     <sonar.version>3.4.0.905</sonar.version>
     <jacoco.version>0.8.1</jacoco.version>
@@ -84,7 +85,27 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
-        <version>${spring.boot.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-log4j2</artifactId>
       </dependency>
 
       <dependency>
